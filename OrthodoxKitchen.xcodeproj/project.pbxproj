@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5754F0F1CDE1328001B7645 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5754F0E1CDE1328001B7645 /* Ingredient.swift */; };
+		D5754F111CDE2654001B7645 /* TomorrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5754F101CDE2654001B7645 /* TomorrowViewController.swift */; };
+		D5754F131CDE3906001B7645 /* AfterTomorrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5754F121CDE3906001B7645 /* AfterTomorrowViewController.swift */; };
+		D5754F151CDE3B9D001B7645 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5754F141CDE3B9D001B7645 /* TodayTableViewCell.swift */; };
+		D5754F171CDE5E78001B7645 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5754F161CDE5E78001B7645 /* RecipesViewController.swift */; };
+		D5754F191CDE9406001B7645 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5754F181CDE9406001B7645 /* MainViewController.swift */; };
+		D5754F1B1CE09072001B7645 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5754F1A1CE09072001B7645 /* ShoppingListViewController.swift */; };
+		D5754F1F1CE1B921001B7645 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D5754F1E1CE1B921001B7645 /* libsqlite3.tbd */; };
 		D5C3AAF51CDD36CD00DC3514 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3AAF41CDD36CD00DC3514 /* AppDelegate.swift */; };
-		D5C3AAF71CDD36CD00DC3514 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3AAF61CDD36CD00DC3514 /* ViewController.swift */; };
+		D5C3AAF71CDD36CD00DC3514 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3AAF61CDD36CD00DC3514 /* TodayViewController.swift */; };
 		D5C3AAFA1CDD36CD00DC3514 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5C3AAF81CDD36CD00DC3514 /* Main.storyboard */; };
-		D5C3AAFD1CDD36CD00DC3514 /* OrthodoxKitchen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5C3AAFB1CDD36CD00DC3514 /* OrthodoxKitchen.xcdatamodeld */; };
 		D5C3AAFF1CDD36CD00DC3514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C3AAFE1CDD36CD00DC3514 /* Assets.xcassets */; };
-		D5C3AB021CDD36CD00DC3514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5C3AB001CDD36CD00DC3514 /* LaunchScreen.storyboard */; };
 		D5C3AB0D1CDD36CD00DC3514 /* OrthodoxKitchenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3AB0C1CDD36CD00DC3514 /* OrthodoxKitchenUITests.swift */; };
+		D5C3AB181CDD371A00DC3514 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3AB171CDD371A00DC3514 /* Recipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +34,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D5754F0E1CDE1328001B7645 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		D5754F101CDE2654001B7645 /* TomorrowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TomorrowViewController.swift; sourceTree = "<group>"; };
+		D5754F121CDE3906001B7645 /* AfterTomorrowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterTomorrowViewController.swift; sourceTree = "<group>"; };
+		D5754F141CDE3B9D001B7645 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
+		D5754F161CDE5E78001B7645 /* RecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
+		D5754F181CDE9406001B7645 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D5754F1A1CE09072001B7645 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
+		D5754F1E1CE1B921001B7645 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D5C3AAF11CDD36CD00DC3514 /* OrthodoxKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrthodoxKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C3AAF41CDD36CD00DC3514 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5C3AAF61CDD36CD00DC3514 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D5C3AAF61CDD36CD00DC3514 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		D5C3AAF91CDD36CD00DC3514 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D5C3AAFC1CDD36CD00DC3514 /* OrthodoxKitchen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OrthodoxKitchen.xcdatamodel; sourceTree = "<group>"; };
 		D5C3AAFE1CDD36CD00DC3514 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D5C3AB011CDD36CD00DC3514 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5C3AB031CDD36CD00DC3514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5C3AB081CDD36CD00DC3514 /* OrthodoxKitchenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrthodoxKitchenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C3AB0C1CDD36CD00DC3514 /* OrthodoxKitchenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodoxKitchenUITests.swift; sourceTree = "<group>"; };
 		D5C3AB0E1CDD36CD00DC3514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5C3AB171CDD371A00DC3514 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5754F1F1CE1B921001B7645 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +76,7 @@
 		D5C3AAE81CDD36CD00DC3514 = {
 			isa = PBXGroup;
 			children = (
+				D5754F1E1CE1B921001B7645 /* libsqlite3.tbd */,
 				D5C3AAF31CDD36CD00DC3514 /* OrthodoxKitchen */,
 				D5C3AB0B1CDD36CD00DC3514 /* OrthodoxKitchenUITests */,
 				D5C3AAF21CDD36CD00DC3514 /* Products */,
@@ -80,12 +96,18 @@
 			isa = PBXGroup;
 			children = (
 				D5C3AAF41CDD36CD00DC3514 /* AppDelegate.swift */,
-				D5C3AAF61CDD36CD00DC3514 /* ViewController.swift */,
+				D5C3AAF61CDD36CD00DC3514 /* TodayViewController.swift */,
 				D5C3AAF81CDD36CD00DC3514 /* Main.storyboard */,
 				D5C3AAFE1CDD36CD00DC3514 /* Assets.xcassets */,
-				D5C3AB001CDD36CD00DC3514 /* LaunchScreen.storyboard */,
 				D5C3AB031CDD36CD00DC3514 /* Info.plist */,
-				D5C3AAFB1CDD36CD00DC3514 /* OrthodoxKitchen.xcdatamodeld */,
+				D5C3AB171CDD371A00DC3514 /* Recipe.swift */,
+				D5754F0E1CDE1328001B7645 /* Ingredient.swift */,
+				D5754F101CDE2654001B7645 /* TomorrowViewController.swift */,
+				D5754F121CDE3906001B7645 /* AfterTomorrowViewController.swift */,
+				D5754F141CDE3B9D001B7645 /* TodayTableViewCell.swift */,
+				D5754F161CDE5E78001B7645 /* RecipesViewController.swift */,
+				D5754F181CDE9406001B7645 /* MainViewController.swift */,
+				D5754F1A1CE09072001B7645 /* ShoppingListViewController.swift */,
 			);
 			path = OrthodoxKitchen;
 			sourceTree = "<group>";
@@ -149,9 +171,11 @@
 				TargetAttributes = {
 					D5C3AAF01CDD36CD00DC3514 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					D5C3AB071CDD36CD00DC3514 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = D5C3AAF01CDD36CD00DC3514;
 					};
 				};
@@ -180,7 +204,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C3AB021CDD36CD00DC3514 /* LaunchScreen.storyboard in Resources */,
 				D5C3AAFF1CDD36CD00DC3514 /* Assets.xcassets in Resources */,
 				D5C3AAFA1CDD36CD00DC3514 /* Main.storyboard in Resources */,
 			);
@@ -200,9 +223,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C3AAF71CDD36CD00DC3514 /* ViewController.swift in Sources */,
-				D5C3AAFD1CDD36CD00DC3514 /* OrthodoxKitchen.xcdatamodeld in Sources */,
+				D5754F1B1CE09072001B7645 /* ShoppingListViewController.swift in Sources */,
+				D5754F131CDE3906001B7645 /* AfterTomorrowViewController.swift in Sources */,
+				D5754F171CDE5E78001B7645 /* RecipesViewController.swift in Sources */,
+				D5C3AAF71CDD36CD00DC3514 /* TodayViewController.swift in Sources */,
+				D5754F111CDE2654001B7645 /* TomorrowViewController.swift in Sources */,
+				D5754F0F1CDE1328001B7645 /* Ingredient.swift in Sources */,
 				D5C3AAF51CDD36CD00DC3514 /* AppDelegate.swift in Sources */,
+				D5C3AB181CDD371A00DC3514 /* Recipe.swift in Sources */,
+				D5754F151CDE3B9D001B7645 /* TodayTableViewCell.swift in Sources */,
+				D5754F191CDE9406001B7645 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,14 +261,6 @@
 				D5C3AAF91CDD36CD00DC3514 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D5C3AB001CDD36CD00DC3514 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D5C3AB011CDD36CD00DC3514 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -335,6 +357,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = prwmind.OrthodoxKitchen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -346,6 +369,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = prwmind.OrthodoxKitchen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -356,6 +380,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = prwmind.OrthodoxKitchenUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = OrthodoxKitchen;
 			};
 			name = Debug;
@@ -367,6 +392,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = prwmind.OrthodoxKitchenUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = OrthodoxKitchen;
 			};
 			name = Release;
@@ -390,6 +416,7 @@
 				D5C3AB131CDD36CD00DC3514 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5C3AB141CDD36CD00DC3514 /* Build configuration list for PBXNativeTarget "OrthodoxKitchenUITests" */ = {
 			isa = XCConfigurationList;
@@ -398,21 +425,9 @@
 				D5C3AB161CDD36CD00DC3514 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D5C3AAFB1CDD36CD00DC3514 /* OrthodoxKitchen.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D5C3AAFC1CDD36CD00DC3514 /* OrthodoxKitchen.xcdatamodel */,
-			);
-			currentVersion = D5C3AAFC1CDD36CD00DC3514 /* OrthodoxKitchen.xcdatamodel */;
-			path = OrthodoxKitchen.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D5C3AAE91CDD36CD00DC3514 /* Project object */;
 }

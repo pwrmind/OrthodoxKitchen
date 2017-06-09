@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import OrthodoxKitchen
 
 class OrthodoxKitchenUITests: XCTestCase {
         
@@ -33,4 +34,11 @@ class OrthodoxKitchenUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func testRecipeIsExist() {
+        //let recipe = Recipe()
+    }
+    
+    func testIngredientIsExist() {
+        //let ingredient = Ingredient()
+    }
 }

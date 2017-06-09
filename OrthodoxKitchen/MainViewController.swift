@@ -1,25 +1,22 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  OrthodoxKitchen
 //
-//  Created by Алексей Бабанов on 06.05.16.
+//  Created by Алексей Бабанов on 08.05.16.
 //  Copyright © 2016 Алексей Бабанов. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class MainViewController: UITableViewController {
+    
     override func viewDidLoad() {
+        let name = String(describing: self)
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-
