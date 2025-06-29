@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrthodoxKitchen - Православная кухня</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.js"></script>
+    <style>
+        :root {
+            --primary: #8e7d5b;
+            --primary-dark: #6b5d43;
+            --secondary: #4a6b5f;
+            --light: #f8f5f0;
+            --dark: #333;
+            --gray: #e0dcd3;
+            --success: #4a6b5f;
+            --danger: #c1666b;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+        
+        .today-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .period-name {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .fast-status {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .fast-yes {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .fast-no {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .food-recommendation {
+            font-size: 1.1rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--gray);
+        }
+        
+        .section-title {
+            color: var(--secondary);
+            font-size: 1.6rem;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .recipe-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .recipe-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .recipe-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .recipe-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .recipe-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        .recipe-description {
+            margin-bottom: 15px;
+            flex-grow: 1;
+            color: #555;
+        }
+        
+        .recipe-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .shopping-cart {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .item-info {
+            flex-grow: 1;
+        }
+        
+        .item-name {
+            font-weight: 500;
+        }
+        
+        .item-quantity {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .item-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--gray);
+            background: white;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-value {
+            margin: 0 10px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .remove-btn {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .cart-total {
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding-top: 15px;
+            border-top: 2px solid var(--primary);
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+        
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            border-top: 1px solid var(--gray);
+        }
+        
+        @media (max-width: 768px) {
+            .recipe-list {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .today-info, .shopping-cart {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .recipe-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">
+                <i class="fas fa-church"></i>
+                <h1>OrthodoxKitchen</h1>
+            </div>
+            <p>Православные традиции в вашей кухне</p>
+        </header>
+        
+        <main>
+            <section class="today-info">
+                <h2>Сегодня</h2>
+                <div class="period-name">{{ todayInfo.period }}</div>
+                <div :class="['fast-status', todayInfo.fastToday ? 'fast-yes' : 'fast-no']">
+                    {{ todayInfo.fastToday ? 'Сегодня пост' : 'Сегодня нет поста' }}
+                </div>
+                <p class="food-recommendation">
+                    {{ todayInfo.fastToday ? 'Рекомендуется постная пища: овощи, фрукты, крупы, рыба (если разрешено)' : 'Разрешена любая пища без ограничений' }}
+                </p>
+            </section>
+            
+            <h2 class="section-title">Рекомендуемые рецепты</h2>
+            <div class="recipe-list">
+                <div v-for="recipe in filteredRecipes" :key="recipe.id" class="recipe-card">
+                    <div class="recipe-image" :style="{ backgroundImage: 'url(' + recipe.image + ')' }"></div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">{{ recipe.title }}</h3>
+                        <p class="recipe-description">{{ recipe.description }}</p>
+                        <div class="recipe-actions">
+                            <button class="btn btn-outline" @click="showRecipeDetails(recipe)">
+                                <i class="fas fa-info-circle"></i> Подробнее
+                            </button>
+                            <button class="btn btn-primary" @click="addToCart(recipe)">
+                                <i class="fas fa-shopping-basket"></i> В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Корзина для покупок</h2>
+            <section class="shopping-cart">
+                <div class="cart-header">
+                    <h3>Ваш список покупок</h3>
+                    <button class="btn btn-outline" @click="clearCart" :disabled="cartItems.length === 0">
+                        <i class="fas fa-trash-alt"></i> Очистить корзину
+                    </button>
+                </div>
+                
+                <div class="cart-items">
+                    <div v-if="cartItems.length === 0" class="empty-cart">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Ваша корзина пуста</p>
+                        <p>Добавьте рецепты, чтобы увидеть список ингредиентов</p>
+                    </div>
+                    
+                    <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
+                        <div class="item-info">
+                            <div class="item-name">{{ item.name }}</div>
+                            <div class="item-quantity">{{ item.quantity }} {{ item.unit }}</div>
+                        </div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button class="quantity-btn" @click="decreaseQuantity(item)" :disabled="item.count <= 1">-</button>
+                                <span class="quantity-value">{{ item.count }}</span>
+                                <button class="quantity-btn" @click="increaseQuantity(item)">+</button>
+                            </div>
+                            <button class="remove-btn" @click="removeItem(index)">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div v-if="cartItems.length > 0" class="cart-total">
+                    Всего позиций: {{ cartItems.length }}
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>OrthodoxKitchen &copy; 2023 - Ваш помощник в православной кухне</p>
+            <p>Следуйте церковным традициям с легкостью</p>
+        </footer>
+        
+        <!-- Модальное окно для деталей рецепта -->
+        <div v-if="selectedRecipe" class="modal" style="display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow: auto;">
+            <div style="background: white; max-width: 600px; margin: 50px auto; padding: 30px; border-radius: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="color: var(--primary);">{{ selectedRecipe.title }}</h2>
+                    <button @click="selectedRecipe = null" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+                </div>
+                
+                <div style="height: 300px; background-size: cover; background-position: center; margin-bottom: 20px;"
+                     :style="{ backgroundImage: 'url(' + selectedRecipe.image + ')' }"></div>
+                
+                <p style="margin-bottom: 20px;">{{ selectedRecipe.description }}</p>
+                
+                <h3 style="color: var(--secondary); margin-bottom: 15px;">Ингредиенты:</h3>
+                <ul style="margin-bottom: 25px; padding-left: 20px;">
+                    <li v-for="(ingredient, idx) in selectedRecipe.ingredients" :key="idx" style="margin-bottom: 8px;">
+                        {{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}
+                    </li>
+                </ul>
+                
+                <button class="btn btn-primary" @click="addToCart(selectedRecipe)" style="width: 100%; padding: 12px;">
+                    <i class="fas fa-shopping-basket"></i> Добавить в корзину
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Хранилище Vuex для управления состоянием
+        const store = new Vuex.Store({
+            state: {
+                // Информация о сегодняшнем дне
+                todayInfo: {
+                    period: "Осенний мясоед",
+                    fastToday: false,
+                    foodRecommendation: "Разрешена любая пища без ограничений"
+                },
+                
+                // Список всех рецептов
+                recipes: [
+                    {
+                        id: 1,
+                        title: "Гречневая каша с грибами",
+                        description: "Сытное постное блюдо с ароматными грибами и луком",
+                        image: "https://images.unsplash.com/photo-1603105037880-8802c0a85d3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600",
+                        ingredients: [
+                            { name: "гречневая крупа", quantity: 200, unit: "г" },
+                            { name: "шампиньоны", quantity: 300, unit: "г" },
+                            { name: "лук репчатый", quantity: 1, unit: "шт" },
+                            { name: "морковь", quantity: 1, unit: "шт" },
+                            { name: "масло растительное", quantity: 3, unit: "ст.л" },
+                            { name: "соль", quantity: 1, unit: "ч.л" }
+                        ],
+                        isFasting: true
+                    },
+                    {
+                        id: 2,
+                        title: "Овощное рагу",
+                        description: "Ароматное рагу из сезонных овощей с зеленью",
+                        image: "https://images.unsplash.com/photo-1598373182133-524e0865d724?ixlib=rb-4.0.3&auto=format&fit=crop&w=600",
+                        ingredients: [
+                            { name: "картофель", quantity: 4, unit: "шт" },
+                            { name: "кабачок", quantity: 1, unit: "шт" },
+                            { name: "морковь", quantity: 2, unit: "шт" },
+                            { name: "лук репчатый", quantity: 1, unit: "шт" },
+                            { name: "перец болгарский", quantity: 2, unit: "шт" },
+                            { name: "помидоры", quantity: 3, unit: "шт" },
+                            { name: "масло растительное", quantity: 3, unit: "ст.л" },
+                            { name: "зелень", quantity: 1, unit: "пучок" }
+                        ],
+                        isFasting: true
+                    },
+                    {
+                        id: 3,
+                        title: "Запеченная рыба с лимоном",
+                        description: "Нежная рыба с цитрусовыми нотками и травами",
+                        image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600",
+                        ingredients: [
+                            { name: "филе рыбы", quantity: 500, unit: "г" },
+                            { name: "лимон", quantity: 1, unit: "шт" },
+                            { name: "оливковое масло", quantity: 2, unit: "ст.л" },
+                            { name: "розмарин", quantity: 1, unit: "веточка" },
+                            { name: "тимьян", quantity: 1, unit: "веточка" },
+                            { name: "соль", quantity: 1, unit: "ч.л" },
+                            { name: "перец", quantity: 0.5, unit: "ч.л" }
+                        ],
+                        isFasting: true
+                    },
+                    {
+                        id: 4,
+                        title: "Салат из свеклы с черносливом",
+                        description: "Витаминный салат с нежным вкусом и полезными свойствами",
+                        image: "https://images.unsplash.com/photo-1543340903-9a36b96a7069?ixlib=rb-4.0.3&auto=format&fit=crop&w=600",
+                        ingredients: [
+                            { name: "свекла", quantity: 3, unit: "шт" },
+                            { name: "чернослив", quantity: 100, unit: "г" },
+                            { name: "грецкие орехи", quantity: 50, unit: "г" },
+                            { name: "чеснок", quantity: 2, unit: "зубчика" },
+                            { name: "майонез постный", quantity: 3, unit: "ст.л" },
+                            { name: "соль", quantity: 0.5, unit: "ч.л" }
+                        ],
+                        isFasting: true
+                    },
+                    {
+                        id: 5,
+                        title: "Куриная грудка с овощами",
+                        description: "Диетическое блюдо из курицы с полезными овощами",
+                        image: "https://images.unsplash.com/photo-1603360946369-dc9bbd814103?ixlib=rb-4.0.3&auto=format&fit=crop&w=600",
+                        ingredients: [
+                            { name: "куриная грудка", quantity: 2, unit: "шт" },
+                            { name: "брокколи", quantity: 200, unit: "г" },
+                            { name: "морковь", quantity: 2, unit: "шт" },
+                            { name: "лук репчатый", quantity: 1, unit: "шт" },
+                            { name: "оливковое масло", quantity: 2, unit: "ст.л" },
+                            { name: "специи", quantity: 1, unit: "ч.л" }
+                        ],
+                        isFasting: false
+                    },
+                    {
+                        id: 6,
+                        title: "Фасолевый суп",
+                        description: "Сытный постный суп с фасолью и овощами",
+                        image: "https://images.unsplash.com/photo-1576021182211-9ea2b1d283e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600",
+                        ingredients: [
+                            { name: "фасоль белая", quantity: 200, unit: "г" },
+                            { name: "картофель", quantity: 3, unit: "шт" },
+                            { name: "морковь", quantity: 1, unit: "шт" },
+                            { name: "лук репчатый", quantity: 1, unit: "шт" },
+                            { name: "томатная паста", quantity: 2, unit: "ст.л" },
+                            { name: "растительное масло", quantity: 2, unit: "ст.л" },
+                            { name: "лавровый лист", quantity: 2, unit: "шт" },
+                            { name: "зелень", quantity: 1, unit: "пучок" }
+                        ],
+                        isFasting: true
+                    }
+                ],
+                
+                // Корзина с ингредиентами
+                cartItems: []
+            },
+            mutations: {
+                // Добавление рецепта в корзину
+                addRecipeToCart(state, recipe) {
+                    // Добавляем все ингредиенты рецепта в корзину
+                    recipe.ingredients.forEach(ingredient => {
+                        // Проверяем, есть ли уже такой ингредиент в корзине
+                        const existingItem = state.cartItems.find(item => 
+                            item.name === ingredient.name && item.unit === ingredient.unit);
+                        
+                        if (existingItem) {
+                            // Если ингредиент уже есть, увеличиваем количество
+                            existingItem.count++;
+                        } else {
+                            // Если нет, добавляем новый элемент
+                            state.cartItems.push({
+                                ...ingredient,
+                                count: 1,
+                                recipeId: recipe.id
+                            });
+                        }
+                    });
+                },
+                
+                // Очистка корзины
+                clearCart(state) {
+                    state.cartItems = [];
+                },
+                
+                // Удаление элемента из корзины
+                removeCartItem(state, index) {
+                    state.cartItems.splice(index, 1);
+                },
+                
+                // Увеличение количества ингредиента
+                increaseQuantity(state, item) {
+                    item.count++;
+                },
+                
+                // Уменьшение количества ингредиента
+                decreaseQuantity(state, item) {
+                    if (item.count > 1) {
+                        item.count--;
+                    }
+                }
+            },
+            getters: {
+                // Фильтрация рецептов в зависимости от поста
+                filteredRecipes(state) {
+                    if (state.todayInfo.fastToday) {
+                        return state.recipes.filter(recipe => recipe.isFasting);
+                    }
+                    return state.recipes;
+                }
+            }
+        });
+
+        // Создаем экземпляр Vue
+        new Vue({
+            el: '#app',
+            store,
+            data: {
+                selectedRecipe: null
+            },
+            computed: {
+                todayInfo() {
+                    return this.$store.state.todayInfo;
+                },
+                recipes() {
+                    return this.$store.state.recipes;
+                },
+                filteredRecipes() {
+                    return this.$store.getters.filteredRecipes;
+                },
+                cartItems() {
+                    return this.$store.state.cartItems;
+                }
+            },
+            methods: {
+                // Показать детали рецепта
+                showRecipeDetails(recipe) {
+                    this.selectedRecipe = recipe;
+                },
+                
+                // Добавить рецепт в корзину
+                addToCart(recipe) {
+                    this.$store.commit('addRecipeToCart', recipe);
+                    this.selectedRecipe = null;
+                    
+                    // Показать уведомление
+                    alert(`Рецепт "${recipe.title}" добавлен в корзину!`);
+                },
+                
+                // Очистить корзину
+                clearCart() {
+                    if (confirm('Вы уверены, что хотите очистить корзину?')) {
+                        this.$store.commit('clearCart');
+                    }
+                },
+                
+                // Удалить элемент из корзины
+                removeItem(index) {
+                    this.$store.commit('removeCartItem', index);
+                },
+                
+                // Увеличить количество
+                increaseQuantity(item) {
+                    this.$store.commit('increaseQuantity', item);
+                },
+                
+                // Уменьшить количество
+                decreaseQuantity(item) {
+                    this.$store.commit('decreaseQuantity', item);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
